@@ -14,5 +14,14 @@ document.querySelector("#book-form").addEventListener("submit", (e) => {
   }
 )
 
-
+function fetchResults(searchQuery) {
+  const url = `https://en.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=20&srsearch=${searchQuery}`;
+  fetch(url)
+  .then(response => response.json())
+  .then(data => {
+      const results = data.query.search;
+      showResults(results);
+  })
+  .catch(error=> console.log(error))
+}
 

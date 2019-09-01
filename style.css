@@ -1,3 +1,12 @@
 .titleColor {
     color:#1a0dab;
 }
+
+.ml-6 {
+    margin-left: 9rem!important;
+  }
+
+  .searchmatch {
+      font-weight: bold;
+  }
+

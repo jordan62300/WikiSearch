@@ -26,7 +26,7 @@ function fetchResults(searchQuery) {
 }
 
 function showResults(results) {
-  // console.log(results);
+   console.log(results);
 
    const searchResults = document.querySelector('.searchResults');
 
@@ -35,17 +35,18 @@ function showResults(results) {
    results.forEach(result => {
      const encodedUrl = encodeURI(`https://en.wikipedia.org/wiki/${result.title}`);
       console.log(encodedUrl);
+      
 
       searchResults.insertAdjacentHTML('beforeend',
      `
      
      <div class="resultItem d-inline p-2">
        <h3 class="resultItem-title">
-         <a class="titleColor" href="${encodedUrl}" target="_blank" rel="noopener">${result.title}</a>
+         <a class="text-primary" href="${encodedUrl}" target="_blank" rel="noopener">${result.title}</a>
        </h3>
-       <span class="resultItem-snippet">${result.snippet}</span><br>
-       <a class="text-success" href="${encodedUrl}" class="resultItem-link" target="_blank" rel="noopener">${encodedUrl}</a>
-      <br>
+       <a class="text-success" href="${encodedUrl}"  target="_blank" rel="noopener">${encodedUrl}</a>
+       <span class="resultItem-snippet d-block text-light">${result.snippet}</span><br>
+      
      </div>`
    );
 

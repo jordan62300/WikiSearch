@@ -25,3 +25,30 @@ function fetchResults(searchQuery) {
   .catch(error=> console.log(error))
 }
 
+function showResults(results) {
+  // console.log(results);
+
+   const searchResults = document.querySelector('.searchResults');
+
+   searchResults.innerHTML = '';
+
+   results.forEach(result => {
+     const encodedUrl = encodeURI(`https://en.wikipedia.org/wiki/${result.title}`);
+      console.log(encodedUrl);
+
+      searchResults.insertAdjacentHTML('beforeend',
+     `
+     
+     <div class="resultItem d-inline p-2">
+       <h3 class="resultItem-title">
+         <a class="titleColor" href="${encodedUrl}" target="_blank" rel="noopener">${result.title}</a>
+       </h3>
+       <span class="resultItem-snippet">${result.snippet}</span><br>
+       <a class="text-success" href="${encodedUrl}" class="resultItem-link" target="_blank" rel="noopener">${encodedUrl}</a>
+      <br>
+     </div>`
+   );
+
+   })
+}
+

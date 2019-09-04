@@ -15,10 +15,11 @@ document.querySelector("#book-form").addEventListener("submit", (e) => {
 )
 
 function fetchResults(searchQuery) {
-  const url = `https://fr.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=20&srsearch=${searchQuery}`;
+  const url = `https://fr.wikipedia.org/w/api.php?action=query&list=search&prop=info&inprop=url&utf8=&format=json&origin=*&srlimit=7&srsearch=${searchQuery}`;
   fetch(url)
   .then(response => response.json())
   .then(data => {
+    console.log(data)
       const results = data.query.search;
       showResults(results);
   })
@@ -26,15 +27,16 @@ function fetchResults(searchQuery) {
 }
 
 function showResults(results) {
-   console.log(results);
+ //  console.log(results);
 
    const searchResults = document.querySelector('.searchResults');
 
    searchResults.innerHTML = '';
 
    results.forEach(result => {
+    // console.log(result)
      const encodedUrl = encodeURI(`https://en.wikipedia.org/wiki/${result.title}`);
-      console.log(encodedUrl);
+     // console.log(encodedUrl);
       
 
       searchResults.insertAdjacentHTML('beforeend',
